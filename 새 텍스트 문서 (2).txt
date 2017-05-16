@@ -1,0 +1,2 @@
+날짜, 종가, 전일비, 등락률, 시가, 고가, 저가, 거래량, 기관매매량, 외국인매매량, 외국인_보유율, 공매도수량
+Timestamp, Close, UpDown, UpDownRatio, Open, High, Low, Volume, Ins_Volume, Foreign_Volume, ForeignPosses, ShortSale
