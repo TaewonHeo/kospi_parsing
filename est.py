@@ -1,5 +1,14 @@
-import re
+import csv
+b = []
+with open('./usd.csv','r') as csvfile:
+    reader = csv.reader(csvfile)
+    for i, row in enumerate(reader):
+        b.append(float(row[0].replace("?","").replace(",","")))
 
-a = ['2016/05/05', '2016/05/04', '2016/05/02']
-m = re.search('\d\d\d\d/\d\d/\d\d', a[1])
-print m.group()
+
+resultFyle = open("out put.csv", 'w')
+
+# Write data to file
+for r in b:
+    resultFyle.write(str(r) + "\n")
+resultFyle.close()

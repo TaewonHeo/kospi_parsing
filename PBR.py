@@ -18,7 +18,6 @@ with open('./Kospi_data.csv','r') as csvfile:
 
 b.pop(0)
 tb.pop(0)
-# print tb
 c.pop(0)
 list = zip(b,c)
 con = pymysql.connect(host='localhost', user='root', password='apstinc',

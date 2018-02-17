@@ -1,6 +1,7 @@
 import win32service
 import win32serviceutil
 import win32event
+import servicemanager
 
 
 class PySvc(win32serviceutil.ServiceFramework):
@@ -15,7 +16,6 @@ class PySvc(win32serviceutil.ServiceFramework):
 
 
     def SvcDoRun(self):
-        import servicemanager
         import time
         f = open('./Adress.txt', 'w')
 
@@ -32,7 +32,7 @@ class PySvc(win32serviceutil.ServiceFramework):
         #     rc = win32event.WaitForSingleObject(self.hWaitStop, 5000)
         #
         # f.write('SHUTTING DOWN\n')
-        # f.close()
+        f.close()
 
     def SvcStop(self):
         # tell the SCM we're shutting down

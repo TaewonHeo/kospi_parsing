@@ -14,20 +14,17 @@ with open('./Kospi_data.csv','r') as csvfile:
     for i, row in enumerate(reader):
         b.append(row[0])
         c.append(row[1])
-        tb.append("kr"+row[0])
+        tb.append("KR"+row[0])
 
 b.pop(0)
 tb.pop(0)
-# print tb
 c.pop(0)
 list = zip(b,c)
-con = pymysql.connect(host='localhost', user='root', password='apstinc',
-                      db="finance", charset='utf8')
+# con = pymysql.connect(host='localhost', user='root', password='apstinc',db="finance", charset='utf8')
 for i in range(len(b)):
-
     for p in range(1):
         try:
-            curs = con.cursor()
+            # curs = con.cursor()
             html = urllib.urlopen('http://paxnet.moneta.co.kr/stock/stockIntro/stockDimAnalysis/supDmdAnalysis01.jsp?code=%s&wlog_pip=T_supDmdAnalysis01'% b[i])
             soup = bs(html, "html.parser")
             table = b[i]
@@ -54,9 +51,11 @@ for i in range(len(b)):
                     qr = "insert into %s (TimeStamp, InstVolume, ForeignVolume, PersonalVolume) values ('%s', %d, %d, %d)" % (tb[i], ts, ins_vol, fr_vol, ps_vol)
                     qr2 = "insert into %s (TimeStamp, InstVolume, ForeignVolume, PersonalVolume) values ('%s', %d, %d, %d)" % (tb[i], ts2, ins_vol2, fr_vol2, ps_vol2)
                     # qr2 = "update %s set InstVolume = %d, ForeignVolume = %d, PersonalVolume = %d where TimeStamp = '%s' " % (tb[i], ins_vol2, fr_vol2, ps_vol2, ts2)
-                    curs.execute(qr)
-                    curs.execute(qr2)
-                    con.commit()
+                    print qr
+                    print qr2
+                    # curs.execute(qr)
+                    # curs.execute(qr2)
+                    # con.commit()
             except:
                 break
                 # print tsg[x], prg[x*7+3], prg[x*7+5], prg[x*7+6]

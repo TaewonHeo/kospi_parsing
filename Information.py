@@ -20,15 +20,13 @@ b.pop(0)
 tb.pop(0)
 # print tb
 c.pop(0)
-print len(c)
 list = zip(b,c)
-con = pymysql.connect(host='localhost', user='root', password='apstinc',
-                      db="finance", charset='utf8')
+# con = pymysql.connect(host='localhost', user='root', password='apstinc',
+#                       db="finance", charset='utf8')
 for i in range(len(b)):
-
     for p in range(1):
         try:
-            curs = con.cursor()
+            # curs = con.cursor()
             # html = urllib.urlopen('http://comp.fnguide.com/SVO2/ASP/SVD_Main.asp?pGB=1&gicode=A%s&cID=&MenuYn=Y&ReportGB=&NewMenuID=101&stkGb=701'% b[i])
             html = urllib.urlopen('http://comp.fnguide.com/SVO2/ASP/SVD_Main.asp?pGB=1&gicode=A%s&cID=&MenuYn=Y&ReportGB=&NewMenuID=101&stkGb=701'% b[i])
             html2 = urllib.urlopen('http://comp.fnguide.com/SVO2/ASP/SVD_Invest.asp?pGB=1&gicode=A%s&cID=&MenuYn=Y&ReportGB=&NewMenuID=105&stkGb=701'% b[i])
@@ -68,12 +66,12 @@ for i in range(len(b)):
                 divid = -1.0
             # print c[i], b[i], per, pbr, pcr, divid, netp
             # print type(c[i]), type(b[i]), type(per), type(pbr), type(pcr), type(divid), type(netp)
-            qr = "insert into Information (Company, CompanyCode, PER, PBR, PCR, Dividend, NetProfit)\
-             values ('%s', '%s', %f, %f, %f, %f, %f)" % (c[i], b[i], per, pbr, pcr, divid, netp)
+            qr = "insert into Information (CompanyCode, PER, PBR, PCR, Dividend, NetProfit)\
+             values ('%s', %f, %f, %f, %f, %f)" % (b[i].zfill(6), per, pbr, pcr, divid, netp)
             # print c[i], b[i], per, pbr, pcr, divid, netp
             # curs.execute(qr)
-            con.commit()
-            curs.close()
+            # con.commit()
+            # curs.close()
             # except:
             #     netp = 0
             #     pcr = float(prw[35].get_text())
