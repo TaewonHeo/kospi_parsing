@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Service.iml" filepath="$PROJECT_DIR$/.idea/Service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Kospi_parsing.iml" filepath="$PROJECT_DIR$/.idea/Kospi_parsing.iml" />
+      <module fileurl="file://F:\Python Project\Kospi_parsing\.idea\Service.iml" filepath="F:\Python Project\Kospi_parsing\.idea\Service.iml" />
     </modules>
   </component>
 </project>

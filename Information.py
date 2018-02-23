@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 from bs4 import BeautifulSoup as bs
-import urllib
+import urllib.request
 import pymysql
-import datetime
-import re
-import time
+
 import csv
 b=[]
 c=[]
@@ -21,15 +19,15 @@ tb.pop(0)
 # print tb
 c.pop(0)
 list = zip(b,c)
-# con = pymysql.connect(host='localhost', user='root', password='apstinc',
-#                       db="finance", charset='utf8')
+con = pymysql.connect(host='localhost', user='root', password='dlsgk8267',
+                      db="finance", charset='utf8')
 for i in range(len(b)):
     for p in range(1):
         try:
             # curs = con.cursor()
-            # html = urllib.urlopen('http://comp.fnguide.com/SVO2/ASP/SVD_Main.asp?pGB=1&gicode=A%s&cID=&MenuYn=Y&ReportGB=&NewMenuID=101&stkGb=701'% b[i])
-            html = urllib.urlopen('http://comp.fnguide.com/SVO2/ASP/SVD_Main.asp?pGB=1&gicode=A%s&cID=&MenuYn=Y&ReportGB=&NewMenuID=101&stkGb=701'% b[i])
-            html2 = urllib.urlopen('http://comp.fnguide.com/SVO2/ASP/SVD_Invest.asp?pGB=1&gicode=A%s&cID=&MenuYn=Y&ReportGB=&NewMenuID=105&stkGb=701'% b[i])
+            # html = urllib.request.urlopen('http://comp.fnguide.com/SVO2/ASP/SVD_Main.asp?pGB=1&gicode=A%s&cID=&MenuYn=Y&ReportGB=&NewMenuID=101&stkGb=701'% b[i])
+            html = urllib.request.urlopen('http://comp.fnguide.com/SVO2/ASP/SVD_Main.asp?pGB=1&gicode=A%s&cID=&MenuYn=Y&ReportGB=&NewMenuID=101&stkGb=701'% b[i])
+            html2 = urllib.request.urlopen('http://comp.fnguide.com/SVO2/ASP/SVD_Invest.asp?pGB=1&gicode=A%s&cID=&MenuYn=Y&ReportGB=&NewMenuID=105&stkGb=701'% b[i])
             soup = bs(html, "html.parser")
             soup2 = bs(html2, "html.parser")
             table = b[i]
@@ -66,8 +64,8 @@ for i in range(len(b)):
                 divid = -1.0
             # print c[i], b[i], per, pbr, pcr, divid, netp
             # print type(c[i]), type(b[i]), type(per), type(pbr), type(pcr), type(divid), type(netp)
-            qr = "insert into Information (CompanyCode, PER, PBR, PCR, Dividend, NetProfit)\
-             values ('%s', %f, %f, %f, %f, %f)" % (b[i].zfill(6), per, pbr, pcr, divid, netp)
+            # qr = "insert into Information (CompanyCode, PER, PBR, PCR, Dividend, NetProfit)\
+            #  values ('%s', %f, %f, %f, %f, %f)" % (b[i].zfill(6), per, pbr, pcr, divid, netp)
             # print c[i], b[i], per, pbr, pcr, divid, netp
             # curs.execute(qr)
             # con.commit()

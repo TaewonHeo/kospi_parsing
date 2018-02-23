@@ -21,7 +21,7 @@ tb.pop(0)
 # print tb
 c.pop(0)
 list = zip(b,c)
-con = pymysql.connect(host='localhost', user='root', password='apstinc',
+con = pymysql.connect(host='localhost', user='root', password='dlsgk8267',
                       db="finance", charset='utf8')
 curs = con.cursor()
 for i in range(len(b)):
@@ -30,7 +30,6 @@ for i in range(len(b)):
         try:
             curs = con.cursor()
             html = urllib.urlopen('http://paxnet.moneta.co.kr/stock/stockIntro/shortSale/shortSaleList.jsp?code=%s&p_curr_page=%d ' % (b[i], p))
-            print 'http://paxnet.moneta.co.kr/stock/stockIntro/shortSale/shortSaleList.jsp?code=%s&p_curr_page=%d'% (b[i], p)
             soup = bs(html, "html.parser")
             table = b[i]
 
@@ -38,10 +37,8 @@ for i in range(len(b)):
             for x in range(30):
                 timestamp = str(titles[x * 6].get_text())
                 ts = timestamp.replace('/', '-')
-                print ts
                 shortsale = int("".join(titles[x * 6 + 4].get_text().split(',')))
                 qr = "insert into %s (TimeStamp, ShortSale) values ('%s', '%d')" % (tb[i], ts, shortsale)
-                print qr
                 curs.execute(qr)
                 con.commit()
             curs.close()

@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 from bs4 import BeautifulSoup as bs
-import urllib
+import urllib.request
 import pymysql
-import datetime
-import re
-import time
 import csv
 b=[]
 c=[]
@@ -21,14 +18,14 @@ tb.pop(0)
 # print tb
 c.pop(0)
 list = zip(b,c)
-con = pymysql.connect(host='localhost', user='root', password='apstinc',
+con = pymysql.connect(host='localhost', user='root', password='dlsgk8267',
                       db="finance", charset='utf8')
 for i in range(len(b)):
 
     for p in range(1, 10, 1):
         try:
             curs = con.cursor()
-            html = urllib.urlopen('http://finance.naver.com/item/sise_day.nhn?code=%s&page=%d' % (b[i], p))
+            html = urllib.request.urlopen('http://finance.naver.com/item/sise_day.nhn?code=%s&page=%d' % (b[i], p))
             soup = bs(html, "html.parser")
             table = b[i]
 

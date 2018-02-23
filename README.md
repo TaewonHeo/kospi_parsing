@@ -20,7 +20,7 @@ sql = """CREATE TABLE IF NOT EXISTS %s(
     ShortSale BIGINT)""" % b[i]
     curs.execute(sql)
 ```
-### Tb2 : PER PBR PCR 데이터를 Information 테이블에 한번에 정리.(분기별)
+Tb2 : PER PBR PCR 데이터를 Information 테이블에 한번에 정리.(분기별)
 ```python
 sql = """CREATE TABLE Information(
 Company VARCHAR(10) PRIMARY KEY,
