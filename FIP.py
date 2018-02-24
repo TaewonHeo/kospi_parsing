@@ -6,15 +6,15 @@ import csv
 class Main():
     def LoadCompany(self):
         self.companyCode = []
-        self.companyName = []
+        # self.companyName = []
         with open('./Kospi_data.csv','r') as csvfile:
             reader = csv.reader(csvfile)
             for i, row in enumerate(reader):
                 self.companyCode.append(row[0])
-                self.companyName.append(row[1])
+                # self.companyName.append(row[1])
 
         self.companyCode.pop(0)
-        self.companyName.pop(0)
+        # self.companyName.pop(0)
 
     def openMysqlConnection(self):
         self.con = pymysql.connect(host='192.168.68.130', user='root', password='dlsgk8267',db="finance", charset='utf8')
