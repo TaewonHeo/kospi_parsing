@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="24709846-caf1-4516-85ff-ac65fd26c7c2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FIP.py" afterPath="$PROJECT_DIR$/FIP.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kospi_data.csv" afterPath="$PROJECT_DIR$/Kospi_data.csv" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -89,8 +88,8 @@
       <file leaf-file-name="FIP.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FIP.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="713">
+              <caret line="31" column="20" lean-forward="true" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
               <folding>
                 <element signature="e#24#59#0" expanded="true" />
               </folding>
@@ -630,8 +629,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FIP.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="713">
+          <caret line="31" column="20" lean-forward="true" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
           <folding>
             <element signature="e#24#59#0" expanded="true" />
           </folding>

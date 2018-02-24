@@ -35,7 +35,7 @@ class Main():
             ForeignVolume BIGINT,
             ForeignPosses BIGINT,
             PersonalVolume BIGINT,
-            ShortSale BIGINT)""" % b[i]
+            ShortSale BIGINT)""" % self.companyCode[i]
             curs.execute(sql)
         self.con.commit()
         curs.close()
@@ -44,7 +44,7 @@ class Main():
         for i in range(len(self.companyCode)):
             for p in range(1):
                 curs = self.con.cursor()
-                html = urllib.request.urlopen('http://paxnet.moneta.co.kr/stock/stockIntro/stockDimAnalysis/supDmdAnalysis01.jsp?code=%s&wlog_pip=T_supDmdAnalysis01'% b[i])
+                html = urllib.request.urlopen('http://paxnet.moneta.co.kr/stock/stockIntro/stockDimAnalysis/supDmdAnalysis01.jsp?code=%s&wlog_pip=T_supDmdAnalysis01'% self.companyCode[i])
                 soup = bs(html, "html.parser")
 
                 tsw = soup.find_all("td", 'TB_tr01_cen')
@@ -104,6 +104,6 @@ class Main():
 if __name__ == '__main__':
     parsing = Main()
     parsing.LoadCompany()
-    parsing.createTable()
     parsing.openMysqlConnection()
+    parsing.createTable()
     parsing.insertVolume()
