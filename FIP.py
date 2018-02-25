@@ -17,25 +17,13 @@ class Main():
         # self.companyName.pop(0)
 
     def openMysqlConnection(self):
-        self.con = pymysql.connect(host='192.168.68.130', user='root', password='dlsgk8267',db="finance", charset='utf8')
+        self.con = pymysql.connect(host='localhost', user='root', password='dlsgk8267',db="finance", charset='utf8')
 
     def createTable(self):
         curs = self.con.cursor()
         for i in range(len(self.companyCode)):
-            sql = """CREATE TABLE IF NOT EXISTS %s(
-            TimeStamp Date PRIMARY KEY,
-            Open INT,
-            Close INT,
-            UpDown INT,
-            UpDownRatio DOUBLE,
-            High INT,
-            Low INT,
-            Volume BIGINT,
-            InstVolume BIGINT,
-            ForeignVolume BIGINT,
-            ForeignPosses BIGINT,
-            PersonalVolume BIGINT,
-            ShortSale BIGINT)""" % self.companyCode[i]
+            sql = """CREATE TABLE IF NOT EXISTS tx(
+            TimeStamp date)"""
             curs.execute(sql)
         self.con.commit()
         curs.close()
@@ -44,7 +32,7 @@ class Main():
         for i in range(len(self.companyCode)):
             for p in range(1):
                 curs = self.con.cursor()
-                html = urllib.request.urlopen('http://paxnet.moneta.co.kr/stock/stockIntro/stockDimAnalysis/supDmdAnalysis01.jsp?code=%s&wlog_pip=T_supDmdAnalysis01'% self.companyCode[i])
+                html = urllib.request.urlopen('http://paxnet.moneta.co.kr//stock/analysis/supplyDisclosure/supDmdAnalysis01?abbrSymbol=004000'.format(self.companyCode[i]))
                 soup = bs(html, "html.parser")
 
                 tsw = soup.find_all("td", 'TB_tr01_cen')
