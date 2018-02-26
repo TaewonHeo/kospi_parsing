@@ -6,7 +6,7 @@ import time
 
 class Main():
     def __init__(self):
-        self.con = pymysql.connect(host='localhost', user='root', password='dlsgk8267',
+        self.con = pymysql.connect(host='localhost', user='root', password='',
                               db="finance", charset='utf8')
         self.invalidCount = 0
 
