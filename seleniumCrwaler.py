@@ -6,7 +6,7 @@ import time
 
 class Main():
     def __init__(self):
-        self.con = pymysql.connect(host='localhost', user='root', password='dlsgk8267',
+        self.con = pymysql.connect(host='localhost', user='root', password='',
                               db="finance", charset='utf8')
         self.invalidCount = 0
 
@@ -145,7 +145,7 @@ class Main():
                     if i % 7 == 0:
                         strPrice = str(row).split('>')[1].split('<')[0].split(',')
                         numPrice = ''.join(strPrice)
-                        priceList.append(numPrice)
+                        priceList.append(float(numPrice))
                     elif i % 7 == 2:
                         Ratio = str(row).split('>')[2].split('</span')[0].split('%')
                         numRaio = ''.join(Ratio)
@@ -172,7 +172,9 @@ class Main():
                         numShortRaio = ''.join(ShortRatio)
                         ShortRatioList.append(float(numShortRaio))
                 zipList = list(zip(dateList, priceList, RatioList, VolumeList, InstList,ForeignList,PersonList, ShortRatioList))
+                zipListforUpdate = (str(dateList[0]), priceList[0], RatioList[0], VolumeList[0], InstList[0],ForeignList[0],PersonList[0], ShortRatioList[0])
                 self.sqlinsert(self.comList[x], str(zipList))
+                self.sqlupdate(self.comList[x], zipListforUpdate)
         self.driver.quit()
 
     def sqlinsert(self, companyCode, values):
@@ -188,8 +190,9 @@ class Main():
     def sqlupdate(self, companyCode, values):
         curs = self.con.cursor()
         try:
-            insertQuery = "insert into t{} (TimeStamp, Close, UpDownRatio, Volume, InstVolume, ForeignVolume, PersonalVolume, ShortSale) values {}".format(companyCode, values[1:-1])
-            curs.execute(insertQuery)
+            updateQuery = "update t%s set Close=%d, UpDownRatio=%d, Volume=%d, InstVolume=%d, ForeignVolume=%d, PersonalVolume=%d, ShortSale=%d where TimeStamp='%s';"%(
+                companyCode, values[1], values[2],values[3],values[4],values[5],values[6],values[7],values[0])
+            curs.execute(updateQuery)
             self.con.commit()
         except:
             pass

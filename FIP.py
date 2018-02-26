@@ -17,7 +17,7 @@ class Main():
         # self.companyName.pop(0)
 
     def openMysqlConnection(self):
-        self.con = pymysql.connect(host='localhost', user='root', password='dlsgk8267',db="finance", charset='utf8')
+        self.con = pymysql.connect(host='localhost', user='root', password='',db="finance", charset='utf8')
 
     def createTable(self):
         curs = self.con.cursor()

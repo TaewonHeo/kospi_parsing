@@ -19,7 +19,7 @@ tb.pop(0)
 # print tb
 c.pop(0)
 list = zip(b,c)
-con = pymysql.connect(host='localhost', user='root', password='dlsgk8267',
+con = pymysql.connect(host='localhost', user='root', password='',
                       db="finance", charset='utf8')
 for i in range(len(b)):
     for p in range(1):
